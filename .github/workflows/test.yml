@@ -30,3 +30,7 @@ jobs:
           TEST: ${{ contains(toJson(github.event.commits.*.message), 'branch') }}
         run: 
           echo "$TEST"
+      - name: run if true
+        if: ${{ contains(toJson(github.event.commits.*.message), 'branch') }}
+        run:
+          echo "dont run this"

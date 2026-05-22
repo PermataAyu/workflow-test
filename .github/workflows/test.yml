@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: sarisia/actions-status-discord@v1
       - name: github context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -37,4 +38,4 @@ jobs:
       - name: test github.workflow
         run: |
           echo ${{toJson(github.workflow)}}
-          echo ${{ github.repositoryUrl }}/${{ github.run_id }}
+          echo ${{github.server_url}}/${{github.repository}}/actions/runs/${{ github.run_id }}

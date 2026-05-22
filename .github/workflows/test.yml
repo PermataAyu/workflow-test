@@ -37,6 +37,6 @@ jobs:
       - name: test github.workflow
         run: |
           echo ${{toJson(github.workflow)}}
-          echo ${{ github.action_path }}
-          echo ${{ github.action }}
-          echo ${{ github.event.action }}
+          echo ${{ toJson(github.action_path) }}
+          echo ${{ toJson(github.action) }}
+          echo ${{ toJson(github.event.action) }}

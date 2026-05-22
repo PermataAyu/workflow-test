@@ -34,3 +34,5 @@ jobs:
         if: ${{ !contains(join(github.event.commits.*.message), 'branch') && github.event_name == 'push'}}
         run:
           echo "dont run this"
+      - name: test github.workflow
+        run: echo ${{toJson(github.workflow)}}

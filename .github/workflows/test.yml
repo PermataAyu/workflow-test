@@ -12,6 +12,7 @@ jobs:
   a_test_job:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: github context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
@@ -35,7 +36,7 @@ jobs:
           echo "dont run this"
       - name: discord webhook
         env: 
-          TEST: ${{ toJson(github.event.commits.id) }}
+          TEST: ${{ toJson(github.event.commits.*.id) }}
         if: ${{success()}}
         uses: sarisia/actions-status-discord@v1
         with:

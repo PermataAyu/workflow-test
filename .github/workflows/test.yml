@@ -31,6 +31,6 @@ jobs:
         run: 
           echo "$TEST"
       - name: run if true
-        if: ${{ contains(join(github.event.commits.*.message), 'branch') }}
+        if: ${{ contains(join(github.event.commits.*.message), 'branch') && github.event_name == 'push'}}
         run:
           echo "dont run this"

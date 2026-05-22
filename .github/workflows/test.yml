@@ -42,4 +42,4 @@ jobs:
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           description: |
-            Test: $TEST
+            Test: "$TEST"

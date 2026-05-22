@@ -25,4 +25,4 @@ jobs:
       - name: check contain
         env:
           TEST: ${{ contains(github.event.commits.*.message, '#skip') }}
-        run: ech "$TEST"
+        run: echo "$TEST"

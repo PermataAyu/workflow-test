@@ -50,4 +50,5 @@ jobs:
             Author: ${{join(github.event.commits.*.author.name, ', ')}}
             Workflow: ${{ github.workflow}}
             Job: ${{ github.job}}
+            Commit Link: ${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}
 

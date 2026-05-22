@@ -36,10 +36,17 @@ jobs:
           echo "dont run this"
       - name: discord webhook
         env: 
-          TEST: ${{ join(github.event.commits.*.id) }}
+          TEST: 
         if: ${{success()}}
         uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           description: |
-            Test: ${{env.TEST}}
+            CommitId: ${{github.event.commits.this.id}}
+            Repository: ${{github.repository}}
+            Branch: ${{github.ref_name}}
+            Message: ${{github.event.commits.this.message}}
+            Author: ${{join(github.event.commits.*.author.name, ', ')}}
+            Workflow: ${{ github.workflow}}
+            Job: ${{ github.job}}
+
